@@ -1,10 +1,10 @@
 # ObligatorioP2
 Obligatorio Programación 2
 
-Rivera Agustin
+Rivera Agustin,
 
-Barretto Matias
+Barretto Matias,
 
-Gil Joaquín
+Gil Joaquín,
 
-Podesta Juan
+Podesta Juan,
