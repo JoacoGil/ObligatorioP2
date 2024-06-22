@@ -7,8 +7,7 @@ import uy.edu.um.entities.Menu;
 public class Main {
     public static void main(String[] args) {
         CargaDatos cargaDatos = new CargaDatos();
-        //problemas aca
-        MyList<EntradaTop50> entradasTop50 = cargaDatos.cargarDatosTop50("./reduced_data.csv");
-        Menu.Menu();
+        MyList<EntradaTop50> entradasTop50 = cargaDatos.cargarDatosTop50("C:\\Users\\juanf\\IdeaProjects\\ObligatorioP2\\src\\main\\java\\uy\\edu\\um\\reduced_data.csv");
+        //Menu.Menu();
     }
 }

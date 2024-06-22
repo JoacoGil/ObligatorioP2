@@ -13,19 +13,20 @@ public class CargaDatos {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(", ");
+                String[] values = line.split(",\"");
 
-                String nombreCancion = values[1];
-                String[] nombreArtista = values[2].split(", ");
+
+                String nombreCancion = values[1].replace("\"", "");
+                String[] nombreArtista = values[2].replace("\"", "").split(", ");
                 MyList<Artista> artistasCancion = new MyLinkedListImpl<>();
                 for (String artista : nombreArtista) {
                     artistasCancion.add(new Artista(artista));
                 }
 
-                int posicion = Integer.parseInt(values[3]);
-                String pais = values[6];
-                LocalDate fecha = LocalDate.parse(values[7]);
-                double tempo = Double.parseDouble(values[23]);
+                int posicion = Integer.parseInt(values[3].replace("\"", ""));
+                String pais = values[6].replace("\"", "");
+                LocalDate fecha = LocalDate.parse(values[7].replace("\"", ""));
+                double tempo = Double.parseDouble(values[23].replace("\"", ""));
 
                 Cancion cancion = new Cancion(nombreCancion, artistasCancion, tempo);
                 EntradaTop50 entrada = new EntradaTop50(cancion, posicion, pais, fecha);

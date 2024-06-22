@@ -12,6 +12,6 @@ import uy.edu.um.tads.linkedlist.MyList;
 @NoArgsConstructor
 public class Cancion {
     private String nombre;
-    private MyList<Artista> artists;
+    private MyList<Artista> artistas;
     private double tempo;
 }
