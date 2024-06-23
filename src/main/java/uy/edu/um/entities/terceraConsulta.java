@@ -5,8 +5,6 @@ import uy.edu.um.tads.linkedlist.MyList;
 import uy.edu.um.tads.linkedlist.MyLinkedListImpl;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 public class terceraConsulta {
     private DataStorage dataStorage;
@@ -22,30 +20,92 @@ public class terceraConsulta {
             return;
         }
 
-        Map<String, Integer> countMap = new HashMap<>();
+        MyHashImpl<String, Integer> countMap = new MyHashImpl<>();
         for (int i = 0; i < entradas.size(); i++) {
             EntradaTop50 entrada = entradas.get(i);
             MyList<Artista> artistas = entrada.getCancion().getArtistas();
             for (int j = 0; j < artistas.size(); j++) {
                 String nombreArtista = artistas.get(j).getNombre();
-                countMap.put(nombreArtista, countMap.getOrDefault(nombreArtista, 0) + 1);
+                if (countMap.contains(nombreArtista)) {
+                    countMap.put(nombreArtista, countMap.get(nombreArtista) + 1);
+                } else {
+                    countMap.put(nombreArtista, 1);
+                }
             }
         }
 
-        MyList<Map.Entry<String, Integer>> top7List = new MyLinkedListImpl<>();
-        countMap.entrySet().stream()
-                .sorted((e1, e2) -> Integer.compare(e2.getValue(), e1.getValue()))
-                .limit(7)
-                .forEach(top7List::add);
+        // Crear una lista de entradas para el top 7
+        MyList<SimpleEntry<String, Integer>> top7List = new MyLinkedListImpl<>();
+        MyList<String> keys = countMap.keys();
 
-        printTop7Artists(top7List);
+        for (int i = 0; i < keys.size(); i++) {
+            String key = keys.get(i);
+            Integer value = countMap.get(key);
+            top7List.add(new SimpleEntry<>(key, value));
+        }
+
+        // Ordenar manualmente la lista top7List
+        MyList<SimpleEntry<String, Integer>> sortedList = sortList(top7List);
+
+        // Limitar a los primeros 7 elementos
+        MyList<SimpleEntry<String, Integer>> limitedTop7List = new MyLinkedListImpl<>();
+        for (int i = 0; i < Math.min(7, sortedList.size()); i++) {
+            limitedTop7List.add(sortedList.get(i));
+        }
+
+        printTop7Artists(limitedTop7List);
     }
 
-    private void printTop7Artists(MyList<Map.Entry<String, Integer>> top7Artists) {
+    private MyList<SimpleEntry<String, Integer>> sortList(MyList<SimpleEntry<String, Integer>> list) {
+        MyList<SimpleEntry<String, Integer>> sortedList = new MyLinkedListImpl<>();
+        while (!list.isEmpty()) {
+            SimpleEntry<String, Integer> maxEntry = null;
+            int maxIndex = -1;
+
+            for (int i = 0; i < list.size(); i++) {
+                SimpleEntry<String, Integer> entry = list.get(i);
+                if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                    maxEntry = entry;
+                    maxIndex = i;
+                }
+            }
+
+            if (maxEntry != null) {
+                sortedList.add(maxEntry);
+                list.remove(maxEntry);
+            }
+        }
+        return sortedList;
+    }
+
+    private void printTop7Artists(MyList<SimpleEntry<String, Integer>> top7Artists) {
         System.out.println("Top 7 artistas:");
         for (int i = 0; i < top7Artists.size(); i++) {
-            Map.Entry<String, Integer> entry = top7Artists.get(i);
+            SimpleEntry<String, Integer> entry = top7Artists.get(i);
             System.out.println((i + 1) + ". " + entry.getKey() + " - " + entry.getValue() + " apariciones");
+        }
+    }
+
+    // Clase SimpleEntry para almacenar las entradas
+    private static class SimpleEntry<K, V> {
+        private K key;
+        private V value;
+
+        public SimpleEntry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
         }
     }
 }
