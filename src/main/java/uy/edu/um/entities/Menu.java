@@ -56,7 +56,8 @@ public class Menu {
                     fechaInicio = LocalDate.parse(scanner.nextLine());
                     System.out.println("Ingresa una fecha de fin en formato YYYY-MM-DD");
                     fechaFin = LocalDate.parse(scanner.nextLine());
-                    // Llamar a la consulta correspondiente
+                    terceraConsulta terceraConsulta = new terceraConsulta(dataStorage);
+                    terceraConsulta.ejecutarConsulta(fechaInicio, fechaFin);
                     break;
                 case 4:
                     System.out.println("Cantidad de veces que aparece un artista específico en un top 50 en una fecha dada");

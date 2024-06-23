@@ -58,4 +58,17 @@ public class DataStorage {
         }
         return entradasPorFecha;
     }
+
+    public MyList<EntradaTop50> getEntradasPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        MyList<EntradaTop50> entradasPorRangoDeFechas = new MyLinkedListImpl<>();
+        Node<EntradaTop50> actual = entradas.getFirst();
+        while (actual != null) {
+            EntradaTop50 entry = actual.getValue();
+            if (!entry.getFecha().isBefore(fechaInicio) && !entry.getFecha().isAfter(fechaFin)) {
+                entradasPorRangoDeFechas.add(entry);
+            }
+            actual = actual.getNext();
+        }
+        return entradasPorRangoDeFechas;
+    }
 }
