@@ -47,7 +47,8 @@ public class Menu {
                     System.out.println("Top 5 canciones que aparecen en más top 50 en un día dado");
                     System.out.println("Ingresa una fecha en formato YYYY-MM-DD");
                     fecha = LocalDate.parse(scanner.nextLine());
-                    // Llamar a la consulta correspondiente
+                    SegundaConsulta segundaConsulta = new SegundaConsulta(dataStorage);
+                    segundaConsulta.ejecutarConsulta(fecha);
                     break;
                 case 3:
                     System.out.println("Top 7 artistas que más aparecen en los tops 50 para un rango de fechas dado");

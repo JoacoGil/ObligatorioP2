@@ -2,12 +2,9 @@ package uy.edu.um.entities;
 
 import uy.edu.um.tads.linkedlist.MyLinkedListImpl;
 import uy.edu.um.tads.linkedlist.MyList;
-import uy.edu.um.tads.heap.MyHeapImpl;
 import uy.edu.um.tads.linkedlist.Node;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DataStorage {
     private MyList<EntradaTop50> entradas;
@@ -47,5 +44,18 @@ public class DataStorage {
             count++;
         }
         return top10;
+    }
+
+    public MyList<EntradaTop50> getEntradasPorFecha(LocalDate fecha) {
+        MyList<EntradaTop50> entradasPorFecha = new MyLinkedListImpl<>();
+        Node<EntradaTop50> actual = entradas.getFirst();
+        while (actual != null) {
+            EntradaTop50 entry = actual.getValue();
+            if (entry.getFecha().equals(fecha)) {
+                entradasPorFecha.add(entry);
+            }
+            actual = actual.getNext();
+        }
+        return entradasPorFecha;
     }
 }
