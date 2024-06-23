@@ -19,7 +19,7 @@ public class primeraConsulta {
         System.out.println("Top 10 canciones:");
         for (int i = 0; i < top10Songs.size(); i++) {
             EntradaTop50 entry = top10Songs.get(i);
-            System.out.println((i + 1) + ". " + entry.getCancion().getNombre() + " - " + entry.getCancion().getArtistas().get(0).getNombre() +
+            System.out.println((i + 1) + ". " + entry.getCancion().getNombre().replaceAll("\"", "").trim() + " - " + entry.getCancion().getArtistas().get(0).getNombre().replaceAll("\"", "").trim() +
                     " (Posición: " + entry.getPosicion() + ")");
         }
     }
