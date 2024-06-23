@@ -20,9 +20,16 @@ public class DataStorage {
         entradas.add(entrada);
     }
 
+    public void agregarEntradas(MyList<EntradaTop50> nuevasEntradas) {
+        Node<EntradaTop50> actual = nuevasEntradas.getFirst();
+        while (actual != null) {
+            entradas.add(actual.getValue());
+            actual = actual.getNext();
+        }
+    }
+
     public MyList<EntradaTop50> getTop10Songs(String pais, LocalDate fecha) {
         MyList<EntradaTop50> top10 = new MyLinkedListImpl<>();
-        String key = pais + fecha.toString();
         MyList<EntradaTop50> entradasPaisyFecha = new MyLinkedListImpl<>();
         Node<EntradaTop50> actual = entradas.getFirst();
         while (actual != null) {
