@@ -1,6 +1,5 @@
 package uy.edu.um.entities;
 
-import uy.edu.um.tads.hash.MyHashImpl;
 import uy.edu.um.tads.linkedlist.MyList;
 import uy.edu.um.tads.linkedlist.MyLinkedListImpl;
 
@@ -8,10 +7,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SegundaConsulta {
+public class segundaConsulta {
     private DataStorage dataStorage;
 
-    public SegundaConsulta(DataStorage dataStorage) {
+    public segundaConsulta(DataStorage dataStorage) {
         this.dataStorage = dataStorage;
     }
 

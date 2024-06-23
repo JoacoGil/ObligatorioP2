@@ -47,7 +47,7 @@ public class Menu {
                     System.out.println("Top 5 canciones que aparecen en más top 50 en un día dado");
                     System.out.println("Ingresa una fecha en formato YYYY-MM-DD");
                     fecha = LocalDate.parse(scanner.nextLine());
-                    SegundaConsulta segundaConsulta = new SegundaConsulta(dataStorage);
+                    segundaConsulta segundaConsulta = new segundaConsulta(dataStorage);
                     segundaConsulta.ejecutarConsulta(fecha);
                     break;
                 case 3:

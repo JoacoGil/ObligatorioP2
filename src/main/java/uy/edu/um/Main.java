@@ -13,7 +13,7 @@ public class Main {
 
         // Carga de datos
         CargaDatos cargaDatos = new CargaDatos();
-        String csvFilePath = "C:\\Users\\Usuario\\Desktop\\UM\\P2\\Project\\ObligatorioP2\\src\\main\\java\\uy\\edu\\um\\reduced_data.csv"; // Ruta relativa al archivo CSV
+        String csvFilePath = "C:\\Users\\juanf\\IdeaProjects\\ObligatorioP2\\src\\main\\java\\uy\\edu\\um\\reduced_data.csv"; // Ruta relativa al archivo CSV
         System.out.println("Intentando cargar el archivo desde: " + csvFilePath);
         MyList<EntradaTop50> entradas = cargaDatos.cargarDatosTop50(csvFilePath);
 
