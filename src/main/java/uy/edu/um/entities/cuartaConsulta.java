@@ -2,7 +2,7 @@ package uy.edu.um.entities;
 
 import uy.edu.um.tads.linkedlist.MyList;
 import java.time.LocalDate;
-
+//
 public class cuartaConsulta {
     private DataStorage dataStorage;
 
