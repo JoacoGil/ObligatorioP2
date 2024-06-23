@@ -40,7 +40,7 @@ public class Menu {
                     pais = scanner.nextLine();
                     System.out.println("Ingrese una fecha en formato YYYY-MM-DD");
                     fecha = LocalDate.parse(scanner.nextLine());
-                    PrimeraConsulta primeraConsulta = new PrimeraConsulta(dataStorage);
+                    primeraConsulta primeraConsulta = new primeraConsulta(dataStorage);
                     primeraConsulta.ejecutarConsulta(pais, fecha);
                     break;
                 case 2:

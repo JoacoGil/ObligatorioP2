@@ -3,20 +3,16 @@ package uy.edu.um.entities;
 import uy.edu.um.tads.linkedlist.MyList;
 import java.time.LocalDate;
 
-public class PrimeraConsulta {
+public class primeraConsulta {
     private DataStorage dataStorage;
 
-    public PrimeraConsulta(DataStorage dataStorage) {
+    public primeraConsulta(DataStorage dataStorage) {
         this.dataStorage = dataStorage;
     }
 
     public void ejecutarConsulta(String pais, LocalDate fecha) {
         MyList<EntradaTop50> top10Songs = dataStorage.getTop10Songs(pais, fecha);
-        if (top10Songs.size() > 0) {
-            printTop10Songs(top10Songs);
-        } else {
-            System.out.println("No se encontraron canciones para el país y la fecha especificados.");
-        }
+        printTop10Songs(top10Songs);
     }
 
     private void printTop10Songs(MyList<EntradaTop50> top10Songs) {
