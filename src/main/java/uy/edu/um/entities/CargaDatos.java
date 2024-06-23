@@ -27,11 +27,11 @@ public class CargaDatos {
                 }
 
                 try {
-                    String nombreCancion = values[1];
-                    String[] nombreArtista = values[2].split(", ");
+                    String nombreCancion = values[1].replaceAll("\"", "").trim();
+                    String[] nombreArtista = values[2].replaceAll("\"", "").trim().split(", ");
                     MyList<Artista> artistasCancion = new MyLinkedListImpl<>();
                     for (String artista : nombreArtista) {
-                        artistasCancion.add(new Artista(artista));
+                        artistasCancion.add(new Artista(artista.trim()));
                     }
                     int posicion = Integer.parseInt(values[3].replaceAll("\"", "").trim());
 
