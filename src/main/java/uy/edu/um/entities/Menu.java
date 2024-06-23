@@ -65,7 +65,8 @@ public class Menu {
                     fecha = LocalDate.parse(scanner.nextLine());
                     System.out.println("Ingresa un artista");
                     artista = scanner.nextLine();
-                    // Llamar a la consulta correspondiente
+                    cuartaConsulta cuartaConsulta = new cuartaConsulta(dataStorage);
+                    cuartaConsulta.ejecutarConsulta(artista, fecha);
                     break;
                 case 5:
                     System.out.println("Cantidad de canciones con un tempo en un rango específico para un rango específico de fechas.");
@@ -74,10 +75,11 @@ public class Menu {
                     System.out.println("Ingresa una fecha de fin en formato YYYY-MM-DD");
                     fechaFin = LocalDate.parse(scanner.nextLine());
                     System.out.println("Ingresa un tempo mínimo");
-                    int tempoMin = Integer.parseInt(scanner.nextLine());
+                    double tempoMin = Double.parseDouble(scanner.nextLine());
                     System.out.println("Ingresa un tempo máximo");
-                    int tempoMax = Integer.parseInt(scanner.nextLine());
-                    // Llamar a la consulta correspondiente
+                    double tempoMax = Double.parseDouble(scanner.nextLine());
+                    quintaConsulta quintaConsulta = new quintaConsulta(dataStorage);
+                    quintaConsulta.ejecutarConsulta(fechaInicio, fechaFin, tempoMin, tempoMax);
                     break;
                 case 6:
                     System.out.println("Saliendo...");
