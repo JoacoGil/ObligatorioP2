@@ -3,10 +3,10 @@ package uy.edu.um.entities;
 import uy.edu.um.tads.linkedlist.MyList;
 import java.time.LocalDate;
 
-public class PrimeraConsulta {
+public class primeraConsulta {
     private DataStorage dataStorage;
 
-    public PrimeraConsulta(DataStorage dataStorage) {
+    public primeraConsulta(DataStorage dataStorage) {
         this.dataStorage = dataStorage;
     }
 
