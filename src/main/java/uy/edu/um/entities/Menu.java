@@ -36,7 +36,7 @@ public class Menu {
             switch (op1) {
                 case 1:
                     System.out.println("Top 10 canciones en un pais en un día dado");
-                    System.out.println("Ingrese país");
+                    System.out.println("Ingrese país (código del país, por ejemplo 'NI')");
                     pais = scanner.nextLine();
                     System.out.println("Ingrese una fecha en formato YYYY-MM-DD");
                     fecha = LocalDate.parse(scanner.nextLine());
